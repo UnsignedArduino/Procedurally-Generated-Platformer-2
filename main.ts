@@ -131,6 +131,9 @@ function is_sprite_hitting_wall (s: Sprite) {
 function create_base_environment () {
     scene.setBackgroundColor(9)
     tiles.setCurrentTilemap(tilemap`level2`)
+    for (let local_tiles of [grafxkid.springGround, grafxkid.springGroundTop]) {
+        tileUtil.setWalls(local_tiles, true)
+    }
 }
 function create_player () {
     sprite_player = sprites.create(img`
