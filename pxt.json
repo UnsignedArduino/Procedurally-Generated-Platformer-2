@@ -1,0 +1,36 @@
+{
+    "name": "Procedurally Generated Platformer 2",
+    "description": "",
+    "dependencies": {
+        "device": "*",
+        "BetterArrays": "github:sargedev/betterarrays#v1.2.1",
+        "grafxkid-tiles": "github:riknoll/grafxkid-tiles#v2.0.1",
+        "arcade-tile-util": "github:microsoft/arcade-tile-util#v1.2.0",
+        "arcade-character-animations": "github:microsoft/arcade-character-animations#v0.0.2",
+        "arcade-state-transitions": "github:riknoll/arcade-state-transitions#v0.0.3",
+        "Timers": "github:microsoft/arcade-timers#v1.1.0",
+        "Stats": "github:UnsignedArduino/Stats#758e35856bd5565e5d0e25c95cccfac79b7fc168",
+        "Extra Effects": "github:alexszeto/extra-effects#v3.1.0",
+        "arcade-sprite-util": "github:jwunderl/arcade-sprite-util#v0.4.1",
+        "arcade-sprite-data": "github:microsoft/arcade-sprite-data#v0.2.1"
+    },
+    "files": [
+        "main.blocks",
+        "main.ts",
+        "README.md",
+        "assets.json",
+        "tilemap.g.jres",
+        "tilemap.g.ts"
+    ],
+    "testFiles": [
+        "test.ts"
+    ],
+    "targetVersions": {
+        "target": "2.0.46",
+        "targetId": "arcade"
+    },
+    "supportedTargets": [
+        "arcade"
+    ],
+    "preferredEditor": "blocksprj"
+}
