@@ -135,6 +135,32 @@ function create_base_environment () {
         tileUtil.setWalls(local_tiles, true)
     }
 }
+function animate_player (s: Sprite) {
+    characterAnimations.loopFrames(
+    s,
+    assets.animation`walk_right_animation`,
+    100,
+    characterAnimations.rule(Predicate.MovingRight)
+    )
+    characterAnimations.loopFrames(
+    s,
+    [assets.animation`walk_right_animation`[0]],
+    100,
+    characterAnimations.rule(Predicate.FacingRight, Predicate.NotMoving)
+    )
+    characterAnimations.loopFrames(
+    s,
+    assets.animation`walk_left_animation`,
+    100,
+    characterAnimations.rule(Predicate.MovingLeft)
+    )
+    characterAnimations.loopFrames(
+    s,
+    [assets.animation`walk_left_animation`[0]],
+    100,
+    characterAnimations.rule(Predicate.FacingLeft, Predicate.NotMoving)
+    )
+}
 function create_player () {
     sprite_player = sprites.create(img`
         . . . . . . f f f f . . . . . . 
@@ -335,6 +361,7 @@ function create_player () {
     })
     stateTransitions.spriteChangeState(sprite_player, "walking")
     scene.cameraFollowSprite(sprite_player)
+    animate_player(sprite_player)
 }
 function unique_colors_in_tile (img2: Image) {
     local_colors = []
@@ -355,7 +382,7 @@ let effect: SpreadEffectData = null
 let local_loc: tiles.Location = null
 let SHOW_PLAYER_DEBUG = false
 stats.turnStats(true)
-SHOW_PLAYER_DEBUG = true
+SHOW_PLAYER_DEBUG = false
 create_base_environment()
 create_player()
 game.onUpdate(function () {
