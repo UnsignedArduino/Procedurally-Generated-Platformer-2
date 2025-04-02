@@ -25,7 +25,7 @@ function location_sprite_hitting (s: Sprite) {
     }
 }
 function sprite_in_water (s: Sprite) {
-    for (let tile of [assets.tile`myTile13`, assets.tile`myTile14`, assets.tile`myTile16`]) {
+    for (let tile of [assets.tile`water`, assets.tile`water_top_1`, assets.tile`water_top_2`]) {
         if (s.tileKindAt(TileDirection.Center, tile)) {
             return true
         }
@@ -355,3 +355,12 @@ stats.turnStats(true)
 SHOW_PLAYER_DEBUG = true
 create_base_environment()
 create_player()
+game.onUpdate(function () {
+    timer.throttle("environment_water_effect", 2000, function () {
+        timer.background(function () {
+            tileUtil.replaceAllTiles(assets.tile`water_top_1`, assets.tile`water_top_2`)
+            pause(1000)
+            tileUtil.replaceAllTiles(assets.tile`water_top_2`, assets.tile`water_top_1`)
+        })
+    })
+})
