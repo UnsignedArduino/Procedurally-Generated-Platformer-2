@@ -131,7 +131,23 @@ function is_sprite_hitting_wall (s: Sprite) {
 function create_base_environment () {
     scene.setBackgroundColor(9)
     tiles.setCurrentTilemap(tilemap`level2`)
-    for (let local_tiles of [grafxkid.springGround, grafxkid.springGroundTop]) {
+    for (let local_tiles of [
+    grafxkid.springGroundTop,
+    grafxkid.springGround,
+    grafxkid.springGroundInnerBottomRight,
+    grafxkid.springGroundRight,
+    grafxkid.springGroundLeft,
+    grafxkid.springGroundTopRight,
+    grafxkid.springGroundLeftAlt,
+    grafxkid.springGroundRightAlt,
+    grafxkid.springGroundAlt,
+    grafxkid.springGroundTopAlt,
+    grafxkid.springGroundTopRightAlt,
+    grafxkid.springGroundTopLeftAlt,
+    grafxkid.springBlock,
+    grafxkid.springGroundTopLeft,
+    grafxkid.springGroundInnerBottomLeft
+    ]) {
         tileUtil.setWalls(local_tiles, true)
     }
 }
@@ -814,11 +830,11 @@ function create_player () {
     stateTransitions.spriteOnStateChange(sprite_player, function (oldState, newState) {
         if (oldState == "swimming" && newState == "walking") {
             effect = extraEffects.createCustomSpreadEffectData(
-            [12, 15],
+            [8, 9],
             false,
             extraEffects.createPresetSizeTable(ExtraEffectPresetShape.Twinkle),
             extraEffects.createPercentageRange(20, 80),
-            extraEffects.createPercentageRange(20, 100),
+            extraEffects.createPercentageRange(50, 100),
             extraEffects.createTimeRange(200, 400)
             )
             effect.z = -1
