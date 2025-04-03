@@ -131,6 +131,7 @@ function is_sprite_hitting_wall (s: Sprite) {
 function create_base_environment () {
     scene.setBackgroundColor(9)
     tiles.setCurrentTilemap(tilemap`level2`)
+    tiles.setCurrentTilemap(tilemap`level1`)
     for (let local_tiles of [
     grafxkid.springGroundTop,
     grafxkid.springGround,
@@ -858,15 +859,17 @@ function unique_colors_in_tile (img2: Image) {
     return local_colors
 }
 let local_colors: number[] = []
-let sprite_player: Sprite = null
 let debug_string = ""
 let effect: SpreadEffectData = null
 let local_loc: tiles.Location = null
+let sprite_player: Sprite = null
 let SHOW_PLAYER_DEBUG = false
 stats.turnStats(true)
 SHOW_PLAYER_DEBUG = false
 create_base_environment()
 create_player()
+tiles.placeOnRandomTile(sprite_player, assets.tile`myTile`)
+tileUtil.replaceAllTiles(assets.tile`myTile`, assets.tile`transparency16`)
 game.onUpdate(function () {
     timer.throttle("environment_water_effect", 2000, function () {
         timer.background(function () {
