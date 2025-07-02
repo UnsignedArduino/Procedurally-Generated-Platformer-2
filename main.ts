@@ -130,23 +130,42 @@ function is_sprite_hitting_wall (s: Sprite) {
 }
 function create_base_environment () {
     scene.setBackgroundColor(9)
+    effects.clouds.startScreenEffect()
+    tiles.setCurrentTilemap(tilemap`level3`)
     tiles.setCurrentTilemap(tilemap`level2`)
     for (let local_tiles of [
-    grafxkid.springGroundTop,
-    grafxkid.springGround,
-    grafxkid.springGroundInnerBottomRight,
-    grafxkid.springGroundRight,
-    grafxkid.springGroundLeft,
-    grafxkid.springGroundTopRight,
-    grafxkid.springGroundLeftAlt,
-    grafxkid.springGroundRightAlt,
-    grafxkid.springGroundAlt,
-    grafxkid.springGroundTopAlt,
-    grafxkid.springGroundTopRightAlt,
-    grafxkid.springGroundTopLeftAlt,
-    grafxkid.springBlock,
     grafxkid.springGroundTopLeft,
-    grafxkid.springGroundInnerBottomLeft
+    grafxkid.springGroundTop,
+    grafxkid.springGroundTopRight,
+    grafxkid.springGround,
+    grafxkid.springGroundLeft,
+    grafxkid.springGroundRight,
+    grafxkid.springGroundInnerBottomRight,
+    grafxkid.springGroundInnerBottomLeft,
+    grafxkid.winterGroundTopLeft,
+    grafxkid.winterGroundTop,
+    grafxkid.winterGroundTopRight,
+    grafxkid.winterGroundLeft,
+    grafxkid.winterGround,
+    grafxkid.winterGroundRight,
+    grafxkid.winterGroundInnerBottomRight,
+    grafxkid.winterGroundInnerBottomLeft,
+    grafxkid.summerGroundTopLeft,
+    grafxkid.summerGroundTop,
+    grafxkid.summerGroundTopRight,
+    grafxkid.summerGroundLeft,
+    grafxkid.summerGround,
+    grafxkid.summerGroundRight,
+    grafxkid.summerGroundInnerBottomRight,
+    grafxkid.summerGroundInnerBottomLeft,
+    grafxkid.fallGroundTopLeft,
+    grafxkid.fallGroundTop,
+    grafxkid.fallGroundTopRight,
+    grafxkid.fallGroundLeft,
+    grafxkid.fallGround,
+    grafxkid.fallGroundRight,
+    grafxkid.fallGroundInnerBottomRight,
+    grafxkid.fallGroundInnerBottomLeft
     ]) {
         tileUtil.setWalls(local_tiles, true)
     }
@@ -228,7 +247,8 @@ function animate_player (s: Sprite) {
     )
     characterAnimations.loopFrames(
     s,
-    [[img`
+    [[
+    img`
         . . . . . . f f f f f f . . . . 
         . . . . f f e e e e f 2 f . . . 
         . . . f f e e e e f 2 2 2 f . . 
@@ -245,7 +265,8 @@ function animate_player (s: Sprite) {
         . . . . . f e e f 4 5 5 f . . . 
         . . . . . . f f f f f f . . . . 
         . . . . . . . f f f . . . . . . 
-        `,img`
+        `,
+    img`
         . . . . . . . . . . . . . . . . 
         . . . . . . f f f f f f . . . . 
         . . . . f f e e e e f 2 f . . . 
@@ -262,7 +283,8 @@ function animate_player (s: Sprite) {
         . . . . f f f e e f 5 5 f f . . 
         . . . . f f f f f f f f f f . . 
         . . . . . f f . . . f f f . . . 
-        `,img`
+        `,
+    img`
         . . . . . . f f f f f f . . . . 
         . . . . f f e e e e f 2 f . . . 
         . . . f f e e e e f 2 2 2 f . . 
@@ -279,7 +301,8 @@ function animate_player (s: Sprite) {
         . . . . . f e e f 4 5 5 f . . . 
         . . . . . . f f f f f f . . . . 
         . . . . . . . f f f . . . . . . 
-        `,img`
+        `,
+    img`
         . . . . . . . . . . . . . . . . 
         . . . . . . f f f f f f . . . . 
         . . . . f f e e e e f 2 f . . . 
@@ -296,7 +319,8 @@ function animate_player (s: Sprite) {
         . . . . f e e f 4 4 5 5 f f . . 
         . . . . f f f f f f f f f f . . 
         . . . . . f f . . . f f f . . . 
-        `][0]],
+        `
+    ][0]],
     100,
     characterAnimations.rule(Predicate.FacingRight, Predicate.NotMoving)
     )
@@ -376,7 +400,8 @@ function animate_player (s: Sprite) {
     )
     characterAnimations.loopFrames(
     s,
-    [[img`
+    [[
+    img`
         . . . . f f f f f f . . . . . . 
         . . . f 2 f e e e e f f . . . . 
         . . f 2 2 2 f e e e e f f . . . 
@@ -393,7 +418,8 @@ function animate_player (s: Sprite) {
         . . . f 5 5 4 f e e f . . . . . 
         . . . . f f f f f f . . . . . . 
         . . . . . . f f f . . . . . . . 
-        `,img`
+        `,
+    img`
         . . . . . . . . . . . . . . . . 
         . . . . f f f f f f . . . . . . 
         . . . f 2 f e e e e f f . . . . 
@@ -410,7 +436,8 @@ function animate_player (s: Sprite) {
         . . f f 5 5 f e e f f f . . . . 
         . . f f f f f f f f f f . . . . 
         . . . f f f . . . f f . . . . . 
-        `,img`
+        `,
+    img`
         . . . . f f f f f f . . . . . . 
         . . . f 2 f e e e e f f . . . . 
         . . f 2 2 2 f e e e e f f . . . 
@@ -427,7 +454,8 @@ function animate_player (s: Sprite) {
         . . . f 5 5 4 f e e f . . . . . 
         . . . . f f f f f f . . . . . . 
         . . . . . . f f f . . . . . . . 
-        `,img`
+        `,
+    img`
         . . . . . . . . . . . . . . . . 
         . . . . f f f f f f . . . . . . 
         . . . f 2 f e e e e f f . . . . 
@@ -444,7 +472,8 @@ function animate_player (s: Sprite) {
         . . f f 5 5 4 4 f e e f . . . . 
         . . f f f f f f f f f f . . . . 
         . . . f f f . . . f f . . . . . 
-        `][0]],
+        `
+    ][0]],
     100,
     characterAnimations.rule(Predicate.FacingLeft, Predicate.NotMoving)
     )
@@ -473,7 +502,8 @@ function animate_player (s: Sprite) {
     )
     characterAnimations.loopFrames(
     s,
-    [[img`
+    [[
+    img`
         . . . . f f f f f f . . . . . . 
         . . . f 2 f e e e e f f . . . . 
         . . f 2 2 2 f e e e e f f . . . 
@@ -490,7 +520,8 @@ function animate_player (s: Sprite) {
         . . . f 5 5 4 f e e f . . . . . 
         . . . . f f f f f f . . . . . . 
         . . . . . . f f f . . . . . . . 
-        `,img`
+        `,
+    img`
         . . . . . . . . . . . . . . . . 
         . . . . f f f f f f . . . . . . 
         . . . f 2 f e e e e f f . . . . 
@@ -507,7 +538,8 @@ function animate_player (s: Sprite) {
         . . f f 5 5 f e e f f f . . . . 
         . . f f f f f f f f f f . . . . 
         . . . f f f . . . f f . . . . . 
-        `,img`
+        `,
+    img`
         . . . . f f f f f f . . . . . . 
         . . . f 2 f e e e e f f . . . . 
         . . f 2 2 2 f e e e e f f . . . 
@@ -524,7 +556,8 @@ function animate_player (s: Sprite) {
         . . . f 5 5 4 f e e f . . . . . 
         . . . . f f f f f f . . . . . . 
         . . . . . . f f f . . . . . . . 
-        `,img`
+        `,
+    img`
         . . . . . . . . . . . . . . . . 
         . . . . f f f f f f . . . . . . 
         . . . f 2 f e e e e f f . . . . 
@@ -541,7 +574,8 @@ function animate_player (s: Sprite) {
         . . f f 5 5 4 4 f e e f . . . . 
         . . f f f f f f f f f f . . . . 
         . . . f f f . . . f f . . . . . 
-        `][0]],
+        `
+    ][0]],
     100,
     characterAnimations.rule(Predicate.FacingLeft, Predicate.HittingWallLeft, Predicate.Moving)
     )
@@ -570,7 +604,8 @@ function animate_player (s: Sprite) {
     )
     characterAnimations.loopFrames(
     s,
-    [[img`
+    [[
+    img`
         . . . . . . f f f f f f . . . . 
         . . . . f f e e e e f 2 f . . . 
         . . . f f e e e e f 2 2 2 f . . 
@@ -587,7 +622,8 @@ function animate_player (s: Sprite) {
         . . . . . f e e f 4 5 5 f . . . 
         . . . . . . f f f f f f . . . . 
         . . . . . . . f f f . . . . . . 
-        `,img`
+        `,
+    img`
         . . . . . . . . . . . . . . . . 
         . . . . f f f f f f . . . . . . 
         . . . f 2 f e e e e f f . . . . 
@@ -604,7 +640,8 @@ function animate_player (s: Sprite) {
         . . f f 5 5 f e e f f f . . . . 
         . . f f f f f f f f f f . . . . 
         . . . f f f . . . f f . . . . . 
-        `,img`
+        `,
+    img`
         . . . . f f f f f f . . . . . . 
         . . . f 2 f e e e e f f . . . . 
         . . f 2 2 2 f e e e e f f . . . 
@@ -621,7 +658,8 @@ function animate_player (s: Sprite) {
         . . . f 5 5 4 f e e f . . . . . 
         . . . . f f f f f f . . . . . . 
         . . . . . . f f f . . . . . . . 
-        `,img`
+        `,
+    img`
         . . . . . . . . . . . . . . . . 
         . . . . f f f f f f . . . . . . 
         . . . f 2 f e e e e f f . . . . 
@@ -638,7 +676,8 @@ function animate_player (s: Sprite) {
         . . f f 5 5 4 4 f e e f . . . . 
         . . f f f f f f f f f f . . . . 
         . . . f f f . . . f f . . . . . 
-        `][0]],
+        `
+    ][0]],
     100,
     characterAnimations.rule(Predicate.FacingRight, Predicate.HittingWallRight, Predicate.Moving)
     )
